@@ -1,0 +1,12 @@
+{
+  "name": "aws-param-cache",
+  "version": "1.0.0",
+  "description": "Cache un/encrypted expiring values as AWS SSM parameters with a TTL",
+  "main": "ssmCache.js",
+  "repository": "https://github.com/CribAdvisor/aws-param-cache.git",
+  "author": "Lawrence Thorpe <lawrence@cribadvisor.uk>",
+  "license": "MIT",
+  "peerDependencies": {
+    "aws-sdk": "^2.648.0"
+  }
+}
