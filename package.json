@@ -1,5 +1,5 @@
 {
-  "name": "aws-param-cache",
+  "name": "@cribadvisor/aws-param-cache",
   "version": "1.1.0",
   "description": "Cache un/encrypted expiring values as AWS SSM parameters with a TTL",
   "main": "./lib/index.js",
@@ -9,5 +9,8 @@
   "license": "MIT",
   "peerDependencies": {
     "aws-sdk": "^2.648.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   }
 }
