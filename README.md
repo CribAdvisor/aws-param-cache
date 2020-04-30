@@ -4,7 +4,7 @@ Cache un/encrypted expiring values as AWS SSM parameters with a TTL
 
 ## Usage
 ```js
-const SSMCache = require('aws-param-cache');
+const SSMCache = require('@cribadvisor/aws-param-cache');
 
 const cache = new SSMCache({
   secret: true,
