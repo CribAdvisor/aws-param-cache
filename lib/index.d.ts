@@ -7,7 +7,11 @@ interface SSMCacheOptions {
      * Where the parameters are stored within SSM *(excluding trailing slash)*
      * Be sure to update the IAM policy (see `README.md`) if changed
      */
-    basePath?: String
+    basePath?: String,
+    /**
+     * ARN of KMS key ID to use to encrypt parameter value
+     */
+    keyId?: String
 }
 
 export = SSMCache;

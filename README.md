@@ -43,10 +43,19 @@ Type: `string`
 
 Default: `/cache`
 
+### keyId
+
+> ARN of KMS key to use to encrypt parameter value (optional)
+
+Type: `string`
+
+Default: `undefined`
+
 ## Required IAM permissions
 **NOTE:**
 1. Replace `Resource` with your AWS region and account ID
 2. Replace `/cache` with the modified `basePath` if applicable
+3. Add `kms:Encrypt` and `kms:Decrypt` actions and resources for your KMS key (if applicable)
 ```
 {
   "Version": "2012-10-17",
