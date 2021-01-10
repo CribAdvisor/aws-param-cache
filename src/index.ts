@@ -20,6 +20,11 @@ interface SSMCacheOptions {
   keyId?: string;
 }
 
+interface ParamValue {
+  TTL: number;
+  Value: string;
+}
+
 class SSMCache {
   options: SSMCacheOptions;
   _ssm: SSM;
@@ -58,7 +63,7 @@ class SSMCache {
       }
       const now = new Date().getTime() / 1000;
       const timestamp = new Date(param.LastModifiedDate).getTime() / 1000;
-      const { TTL: ttl, Value: value } = JSON.parse(param.Value);
+      const { TTL: ttl, Value: value }: ParamValue = JSON.parse(param.Value);
       if (now > timestamp + ttl) {
         await this._ssm
           .deleteParameter({
@@ -90,14 +95,14 @@ class SSMCache {
       ttl,
       ow.number.is((x) => x > 0 || `Expected \`${x}\` to be greater than 0`)
     );
-    const param = JSON.stringify({
+    const param: ParamValue = {
       TTL: ttl,
       Value: value,
-    });
+    };
     return await this._ssm
       .putParameter({
         Name: this._escapeName(`${this.options.basePath}/${key}`),
-        Value: param,
+        Value: JSON.stringify(param),
         Type: this.options.secret ? "SecureString" : "String",
         Overwrite: true,
         KeyId: this.options.keyId,
